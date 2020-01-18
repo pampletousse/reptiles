@@ -15,7 +15,7 @@
     <tbody>
         {% for reptile in reptiles %}
         <tr>
-            <td>{{reptile.nom}}</td>
+            <td><a href="{% url 'detail' reptile.pk %}">{{reptile.nom}}</a></td>
             <td>{{reptile.nomEspece}}</td>
             <td>{{reptile.ordre}}</td>
             <td>{{reptile.poids}}</td>

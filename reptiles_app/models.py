@@ -8,7 +8,7 @@ class Reptile(models.Model):
     nom = models.CharField(max_length=100)
     nomEspece = models.CharField(max_length=200)
     ordre = models.CharField(max_length=200)
-    age = models.PositiveIntegerField()
+    age = models.PositiveIntegerField(default=0)
     poids = models.PositiveIntegerField()
     user = models.ForeignKey(User,on_delete=models.CASCADE)
 

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from .models import Reptile
+from .forms import ReptileModelForm
 
 # Create your views here.
 def home(request):
@@ -14,13 +15,15 @@ def home(request):
 def create(request):
 
     if request.method == 'GET':
-        print("get")
         template = loader.get_template("reptiles/form.html")
+        form = ReptileModelForm()
+        context = {"form":form}
     elif request.method == 'POST':
-        print("post")
         template = loader.get_template("reptiles/form.html")
-    else:
-        print("rien")
+        context={"form":ReptileModelForm(request.POST)}
+        if context["form"].is_valid():
+            s = context["form"].save()
+        #template = loader.get_template("reptiles/form.html")
 
     return HttpResponse(template.render(context,request))
 

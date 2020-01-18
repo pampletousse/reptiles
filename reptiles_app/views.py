@@ -9,3 +9,25 @@ def home(request):
         "homeText":"Accueil",
     }
     return HttpResponse(template.render(context,request))
+
+def create(request):
+
+    if request.method == 'GET':
+        print("get")
+        #template = loader.get_template("landing/form.html")
+        #form = RucheModelForm()
+        #context = {"form":form}
+    elif request.method == 'POST':
+        #from ipdb import set_trace
+        #set_trace()
+        print("post")
+        #template = loader.get_template("landing/form.html")
+        #form = RucheModelForm()
+        #context = {"form":form}
+        # contexte pour sauvegarde du form
+        #validation
+        #save 
+    else:
+        print("rien")
+
+    return HttpResponse(template.render(context,request))

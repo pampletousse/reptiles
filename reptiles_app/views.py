@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.template import loader
 from django.http import HttpResponse
 from .models import Reptile
 from .forms import ReptileModelForm
 
 # Create your views here.
+
 def home(request):
     template = loader.get_template("reptiles/home.html")
     context = {
@@ -33,4 +34,13 @@ def liste(request):
     reptiles = Reptile.objects.all()
     context = {"reptiles":reptiles}
 
+    return HttpResponse(template.render(context,request))
+
+def detail(request,pk):
+    template = loader.get_template("reptiles/detail.html")
+
+    reptile = get_object_or_404(Reptile,pk=pk)
+    context = {
+        "reptile":reptile
+    }
     return HttpResponse(template.render(context,request))

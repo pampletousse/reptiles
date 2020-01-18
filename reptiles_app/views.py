@@ -28,6 +28,15 @@ def create(request):
 
     return HttpResponse(template.render(context,request))
 
+def delete(request,pk):
+
+    template = loader.get_template("reptiles/liste.html")
+    reptile = get_object_or_404(Reptile,pk=pk)
+    context = {}
+    Reptile.objects.filter(pk=pk).delete()
+
+    return HttpResponse(template.render(context,request))
+
 def liste(request):
 
     template = loader.get_template("reptiles/liste.html")

@@ -21,6 +21,8 @@
             <td>{{reptile.poids}}</td>
             <td>{{reptile.age}}</td>
             <td>{{reptile.user}}</td>
+            <td><a href="{% url 'update' reptile.pk %}">modifier</a></td>
+            <td><a href="{% url 'delete' reptile.pk %}">supprimer</a></td>
         </tr>
         {% endfor %}
     </tbody>

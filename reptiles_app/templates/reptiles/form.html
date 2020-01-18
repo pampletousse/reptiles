@@ -1,8 +1,8 @@
 {% extends "reptiles/layout.html" %}
 {% block content %}
-<form method="post" action="{% url 'create' %}">
+<form method="post" action="{% url typeEnvoi pk %}">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="{{typeEnvoi}}">
 </form>
 {% endblock %}

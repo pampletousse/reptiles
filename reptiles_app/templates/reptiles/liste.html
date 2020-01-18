@@ -12,9 +12,16 @@
         </tr>
     </thead>
     <tbody>
+        {% for reptile in reptiles %}
         <tr>
-            <td></td>
+            <td>{{reptile.nom}}</td>
+            <td>{{reptile.nomEspece}}</td>
+            <td>{{reptile.ordre}}</td>
+            <td>{{reptile.poids}}</td>
+            <td>{{reptile.age}}</td>
+            <td>{{reptile.user}}</td>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
 {% endblock %}

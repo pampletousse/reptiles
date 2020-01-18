@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from .models import Reptile
 
 # Create your views here.
 def home(request):
@@ -14,20 +15,19 @@ def create(request):
 
     if request.method == 'GET':
         print("get")
-        #template = loader.get_template("landing/form.html")
-        #form = RucheModelForm()
-        #context = {"form":form}
+        template = loader.get_template("reptiles/form.html")
     elif request.method == 'POST':
-        #from ipdb import set_trace
-        #set_trace()
         print("post")
-        #template = loader.get_template("landing/form.html")
-        #form = RucheModelForm()
-        #context = {"form":form}
-        # contexte pour sauvegarde du form
-        #validation
-        #save 
+        template = loader.get_template("reptiles/form.html")
     else:
         print("rien")
+
+    return HttpResponse(template.render(context,request))
+
+def liste(request):
+
+    template = loader.get_template("reptiles/liste.html")
+    reptiles = Reptile.objects.all()
+    context = {"reptiles":reptiles}
 
     return HttpResponse(template.render(context,request))

@@ -1,6 +1,7 @@
 {% extends "reptiles/layout.html" %}
 {% block content %}
-<form method="post" action="{% url typeEnvoi pk %}">
+<h1>modification</h1>
+<form class="formUpdate" method="post" action="{% url typeEnvoi pk %}">
     {% csrf_token %}
     {{form}}
     <input type="submit" value="{{typeEnvoi}}">

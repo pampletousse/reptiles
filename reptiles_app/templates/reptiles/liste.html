@@ -1,6 +1,7 @@
 {% extends "reptiles/layout.html" %}
 {% block content %}
-<table>
+<h1>reptiles</h1>
+<table class="listeReptiles">
     <thead>
         <tr>
             <td>Nom</td>
@@ -28,4 +29,5 @@
         {% endfor %}
     </tbody>
 </table>
+<a href="{% url 'create' %}">Ajouter</a>
 {% endblock %}

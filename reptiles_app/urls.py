@@ -9,4 +9,5 @@ urlpatterns = [
     path('liste/',views.liste,name='liste'),
     path('detail/<int:pk>',views.detail,name='detail'),
     path('connexion/',views.connexion,name='connexion'),
+    path('deconnexion/',views.deconnexion,name='deconnexion'),
 ]

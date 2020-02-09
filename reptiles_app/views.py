@@ -1,9 +1,10 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.template import loader
 from django.http import HttpResponse
 from .models import Reptile
 from .forms import ReptileModelForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout,login
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -15,6 +16,7 @@ def home(request):
     }
     return HttpResponse(template.render(context,request))
 
+@login_required(login_url='/connexion/')
 def create(request):
 
     if request.method == 'GET':
@@ -30,9 +32,9 @@ def create(request):
         if context["form"].is_valid():
             s = context["form"].save()
         
-
     return HttpResponse(template.render(context,request))
 
+@login_required(login_url='/connexion/')
 def update(request,pk):
 
     reptile = get_object_or_404(Reptile,pk=pk)
@@ -44,6 +46,7 @@ def update(request,pk):
 
     return HttpResponse(template.render(context,request))
 
+@login_required(login_url='/connexion/')
 def delete(request,pk):
 
     template = loader.get_template("reptiles/liste.html")
@@ -54,7 +57,7 @@ def delete(request,pk):
     return HttpResponse(template.render(context,request))
 
 def liste(request):
-
+    print(request.user)
     template = loader.get_template("reptiles/liste.html")
     reptiles = Reptile.objects.all()
     context = {"reptiles":reptiles}
@@ -64,7 +67,6 @@ def liste(request):
 def detail(request,pk):
 
     template = loader.get_template("reptiles/detail.html")
-
     reptile = get_object_or_404(Reptile,pk=pk)
     context = {
         "reptile":reptile
@@ -77,14 +79,17 @@ def connexion(request):
     if request.method == 'POST':
         user = authenticate(username=request.POST["username"], password=request.POST["password"])
         if user is not None:
-            print("connecte")
-            template = loader.get_template("reptiles/connexion.html")
-            context = {}
-            # A backend authenticated the credentials
+            login(request, user)
+            return redirect("/liste/")
         else:
             print("non connecte")
             template = loader.get_template("reptiles/connexion.html")
             context = {}
-            # No backend authenticated the credentials
 
+    return HttpResponse(template.render(context,request))
+
+def deconnexion(request):
+    logout(request)
+    template = loader.get_template("reptiles/connexion.html")
+    context = {}
     return HttpResponse(template.render(context,request))

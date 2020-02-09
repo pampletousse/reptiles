@@ -5,9 +5,17 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.headerUser {
+    display: block;
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 100px;
+}
+
 .content {
     width: 80%;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 /* LIENS */
@@ -38,10 +46,16 @@ a:hover {
     background-color: rgb(200, 200, 200);
 }
 
+.btnBottom {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
 /* LISTE */
 .listeReptiles {
     text-align: center;
-    margin: 30px 0px;
+    margin: 30px auto;
 }
 
 .listeReptiles thead td {
@@ -55,7 +69,8 @@ a:hover {
 
 /* FORM */
 .formReptiles {
-    margin: 20px 0;
+    margin: 20px auto;
+    width: 70%;
 }
 
 .formCreate label,
@@ -71,4 +86,9 @@ a:hover {
     width: 70%;
     float: left;
     margin-bottom: 20px;
+}
+
+/*select fix size*/
+#id_user {
+    width: 70%;
 }

@@ -1,6 +1,8 @@
 {% extends "reptiles/layout.html" %}
 {% block content %}
 <h1>Accueil</h1>
-<a title="liste" href="{% url 'liste' %}">Liste</a>
-<a title="création" href="{% url 'create' %}">Ajouter</a>
+<div class="btnBottom">
+    <a title="liste" href="{% url 'liste' %}">Liste</a>
+    <a title="création" href="{% url 'create' %}">Ajouter</a>
+</div>
 {% endblock %}

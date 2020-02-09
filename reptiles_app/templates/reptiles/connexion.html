@@ -18,8 +18,10 @@
             <input type="text" name="password">
             <input class="btn" type="submit" value="Connexion">
         </form>
-        <a class="btn" title="déconnexion" href="{% url 'deconnexion' %}">Déconnexion</a>
-        <a class="btn" title="accueil" href="{% url 'home' %}">Accueil</a>
+        <div class="btnBottom">
+            <a class="btn" title="déconnexion" href="{% url 'deconnexion' %}">Déconnexion</a>
+            <a class="btn" title="accueil" href="{% url 'home' %}">Accueil</a>
+        </div>
     </div>
 </body>
 

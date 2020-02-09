@@ -7,7 +7,9 @@
 <p>Poids : {{reptile.poids}}</p>
 <p>Age : {{reptile.age}}</p>
 <p>User : {{reptile.user}}</p>
-<a href="{% url 'liste' %}" title="Liste">Retour Liste</a>
-<a href="{% url 'update' reptile.pk %}" title="Modifier">Modifier</a>
-<a href="{% url 'delete' reptile.pk %}" title="Supprimer">Supprimer</a>
+<div class="btnBottom">
+    <a href="{% url 'liste' %}" title="Liste">Retour Liste</a>
+    <a href="{% url 'update' reptile.pk %}" title="Modifier">Modifier</a>
+    <a href="{% url 'delete' reptile.pk %}" title="Supprimer">Supprimer</a>
+</div>
 {% endblock %}

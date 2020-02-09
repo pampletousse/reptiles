@@ -3,6 +3,7 @@ from django.template import loader
 from django.http import HttpResponse
 from .models import Reptile
 from .forms import ReptileModelForm
+from django.contrib.auth import authenticate
 
 # Create your views here.
 
@@ -68,4 +69,22 @@ def detail(request,pk):
     context = {
         "reptile":reptile
     }
+    return HttpResponse(template.render(context,request))
+
+def connexion(request):
+    template = loader.get_template("reptiles/connexion.html")
+    context = {}
+    if request.method == 'POST':
+        user = authenticate(username=request.POST["username"], password=request.POST["password"])
+        if user is not None:
+            print("connecte")
+            template = loader.get_template("reptiles/connexion.html")
+            context = {}
+            # A backend authenticated the credentials
+        else:
+            print("non connecte")
+            template = loader.get_template("reptiles/connexion.html")
+            context = {}
+            # No backend authenticated the credentials
+
     return HttpResponse(template.render(context,request))

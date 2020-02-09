@@ -8,4 +8,5 @@ urlpatterns = [
     path('update/<int:pk>',views.update,name='update'),
     path('liste/',views.liste,name='liste'),
     path('detail/<int:pk>',views.detail,name='detail'),
+    path('connexion/',views.connexion,name='connexion'),
 ]

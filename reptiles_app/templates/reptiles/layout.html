@@ -8,6 +8,10 @@
 </head>
 
 <body>
+    <header>
+        <p>{{userContext}}</p>
+        <a href="{% url codeco %}">{{codeco}}</a>
+    </header>
     <div class="content">
         {% block content %}
         {% endblock %}

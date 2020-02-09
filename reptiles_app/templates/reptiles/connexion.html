@@ -1,13 +1,26 @@
-{% extends "reptiles/layout.html" %}
-{% block content %}
-<h1>Connexion</h1>
-<form class="formReptiles formConnexion" method="post" action="{% url 'connexion' %}">
-    {% csrf_token %}
-    <label for="username">nom utilisateur</label>
-    <input type="text" name="username">
-    <label for="password">mot de passe</label>
-    <input type="text" name="password">
-    <input class="btn" type="submit" value="Connexion">
-</form>
-<a class="btn" title="déconnexion" href="{% url 'deconnexion' %}">Déconnexion</a>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Reptiles</title>
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css" />
+</head>
+
+<body>
+    <div class="content">
+        <h1>Connexion</h1>
+        <form class="formReptiles formConnexion" method="post" action="{% url 'connexion' %}">
+            {% csrf_token %}
+            <label for="username">nom utilisateur</label>
+            <input type="text" name="username">
+            <label for="password">mot de passe</label>
+            <input type="text" name="password">
+            <input class="btn" type="submit" value="Connexion">
+        </form>
+        <a class="btn" title="déconnexion" href="{% url 'deconnexion' %}">Déconnexion</a>
+        <a class="btn" title="accueil" href="{% url 'home' %}">Accueil</a>
+    </div>
+</body>
+
+</html>

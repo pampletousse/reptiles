@@ -1,10 +1,10 @@
 {% extends "reptiles/layout.html" %}
 {% block content %}
-<h1>modification</h1>
-<form class="formUpdate" method="post" action="{% url typeEnvoi pk %}">
+<h1>Modification</h1>
+<form class="formReptiles formUpdate" method="post" action="{% url typeEnvoi pk %}">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="{{typeEnvoi}}">
+    <input class="btn" type="submit" value="{{typeEnvoi}}">
 </form>
 <a href="{% url 'liste' %}" title="Annuler">Annuler</a>
 {% endblock %}
